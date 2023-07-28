@@ -1,0 +1,12 @@
+[project]
+name = "hydra-config"
+version = ""
+description = "Example code for managing structured, strongly-typed configuration in Hydra projects"
+authors = [
+    {name = "Robert Fink", email = "robert.fink@helsing.ai"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
