@@ -1,11 +1,14 @@
 [project]
 name = "hydra-config"
-version = ""
+version = "0.0.0"
 description = "Example code for managing structured, strongly-typed configuration in Hydra projects"
 authors = [
     {name = "Robert Fink", email = "robert.fink@helsing.ai"},
 ]
-dependencies = []
+dependencies = [
+    "hydra-core>=1.3.2",
+    "databind>=4.4.0",
+]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
