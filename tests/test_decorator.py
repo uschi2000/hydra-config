@@ -24,7 +24,7 @@ InputTypes = RemoteInput | LocalInput
 InputConfigurations = dict[str, InputTypes]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Config:
     name: str
     answer: int
