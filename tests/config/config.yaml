@@ -1,9 +1,9 @@
+defaults:
+  - inputs/standard.yaml
+
 name: foo
 answer: 42
 tags: ["a", "b"]
 inputs:
-  some_local_input:
-    path: /data
-  some_remote_input:
-    url: https://foo/bar
-    token: 7a72f169-f8c3-4b3e-8041-021a62a2d87f:my_token
+  extra_local_input:
+    path: /data_extra
