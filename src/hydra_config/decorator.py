@@ -82,7 +82,7 @@ def hydra_main2(config_path: Path) -> Callable[[Callable[[Any], Any]], Any]:
 
         def decorated_main(_config: Any | None = None) -> Any:
             hydra_decorator = hydra.main(os.fspath(config_path), "config", "1.3")
-            return (hydra_decorator(hydra_main))()
+            return hydra_decorator(hydra_main)()
 
         return decorated_main
 
