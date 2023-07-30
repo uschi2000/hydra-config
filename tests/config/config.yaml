@@ -5,5 +5,5 @@ name: foo
 answer: 42
 tags: ["a", "b"]
 inputs:
-  extra_local_input:
+  extra_local_dataset:
     path: /data_extra

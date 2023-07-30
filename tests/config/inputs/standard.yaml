@@ -1,5 +1,5 @@
-default_local_input:
+default_local_dataset:
   path: /data
-default_remote_input:
+default_remote_dataset:
   url: https://foo/bar
   token: 7a72f169-f8c3-4b3e-8041-021a62a2d87f:my_token
