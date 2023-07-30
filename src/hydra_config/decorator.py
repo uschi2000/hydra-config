@@ -34,13 +34,12 @@ class TokenConverter(Converter):
 
         if ctx.direction.is_serialize():
             return str(ctx.value)
-        elif ctx.direction.is_deserialize():
+        if ctx.direction.is_deserialize():
             if isinstance(ctx.value, str):
                 parts = ctx.value.split(":")
                 return Token(UUID(parts[0]), parts[1])
             raise NotImplementedError
-        else:
-            raise Exception("Invalid Context direction, this is a bug")
+        raise Exception("Invalid Context direction, this is a bug")
 
 
 class ConfigParser:
