@@ -162,4 +162,4 @@ cython_debug/
 .idea/
 
 # hydra output
-tests/outputs
+outputs/
