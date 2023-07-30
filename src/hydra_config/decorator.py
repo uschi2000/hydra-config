@@ -8,10 +8,10 @@ from typing import Any
 from uuid import UUID
 
 import hydra
-from databind.core import Converter, Context, ObjectMapper
+from databind.core import Context, Converter, ObjectMapper
 from databind.json import JsonModule
 from omegaconf import DictConfig
-from typeapi import TypeHint, ClassTypeHint
+from typeapi import ClassTypeHint, TypeHint
 
 
 @dataclass(frozen=True)

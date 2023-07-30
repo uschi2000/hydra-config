@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Literal
 from uuid import UUID
 
-from hydra_config.decorator import hydra_main2, Token
+from hydra_config.decorator import Token, hydra_main2
 
 
 @dataclass(frozen=True)
