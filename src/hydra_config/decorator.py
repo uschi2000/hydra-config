@@ -58,8 +58,8 @@ class ConfigParser:
 
 def hydra_main2(config_path: Path) -> Callable[[Callable[[Any], Any]], Any]:
     """
-    An alternative hydra_main decorator that deserializes the OmegaConf object
-    using intro a dataclass using the databind library.
+    An alternative hydra_main decorator that deserializes the OmegaConf
+    DictConfig into a Config dataclass using the databind library.
     """
 
     def main_decorator(
