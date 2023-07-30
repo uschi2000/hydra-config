@@ -8,10 +8,10 @@ from typing import Any
 from uuid import UUID
 
 import hydra
-from databind.core import Converter, Context, ObjectMapper
+from databind.core import Context, Converter, ObjectMapper
 from databind.json import JsonModule
 from omegaconf import DictConfig
-from typeapi import TypeHint, ClassTypeHint
+from typeapi import ClassTypeHint, TypeHint
 
 
 @dataclass(frozen=True)
@@ -34,13 +34,12 @@ class TokenConverter(Converter):
 
         if ctx.direction.is_serialize():
             return str(ctx.value)
-        elif ctx.direction.is_deserialize():
+        if ctx.direction.is_deserialize():
             if isinstance(ctx.value, str):
                 parts = ctx.value.split(":")
                 return Token(UUID(parts[0]), parts[1])
             raise NotImplementedError
-        else:
-            raise Exception("Invalid Context direction, this is a bug")
+        raise Exception("Invalid Context direction, this is a bug")
 
 
 class ConfigParser:
@@ -69,11 +68,13 @@ def hydra_main2(config_path: Path) -> Callable[[Callable[[Any], Any]], Any]:
         @functools.wraps(task_function)
         def hydra_main(raw_config: Any) -> Any:
             # Converts the given DictConfig into a Config object with the type
-            # specified by the main method (ie, typically a project-defined `Config` class).
+            # specified by the main method (ie, typically a project-defined `Config`
+            # class).
             parameters = signature(task_function).parameters
             if parameters.get("config") is None:
                 raise Exception(
-                    "@hydra_main2 method must have first parameter of the form `config: Config`"
+                    "@hydra_main2 method must have first parameter "
+                    "of the form `config: Config`"
                 )
 
             config_class = parameters["config"].annotation
@@ -82,7 +83,7 @@ def hydra_main2(config_path: Path) -> Callable[[Callable[[Any], Any]], Any]:
 
         def decorated_main(_config: Any | None = None) -> Any:
             hydra_decorator = hydra.main(os.fspath(config_path), "config", "1.3")
-            return (hydra_decorator(hydra_main))()
+            return hydra_decorator(hydra_main)()
 
         return decorated_main
 
